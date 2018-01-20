@@ -17,6 +17,7 @@ import starburst from './shaders/Starburst';
 import matrix from './shaders/Matrix';
 import normal from './shaders/Normal';
 import voronoise from './shaders/Voronoise';
+import woodGrain from './shaders/WoodGrain';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class App extends Component {
       starburst,
       normal,
       matrix,
-      voronoise
+      voronoise,
+      woodGrain
     ];
     this.state = {
       currentShader: null,
