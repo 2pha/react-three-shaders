@@ -25,44 +25,47 @@ export default class Controls extends PureComponent {
         />
 
         {Object.keys(customUniforms).map(key => {
-          //console.log(this.props.currentShader.uniforms[key]);
-          let cu = this.props.currentShader.uniforms[key];
-          switch (cu.type) {
-            case 'c':
-              let col = cu.value;
-              return (
-                <dg.Color
-                  key={key}
-                  label={key}
-                  expanded={false}
-                  red={parseInt(col.r * 256, 10)}
-                  green={parseInt(col.g * 256, 10)}
-                  blue={parseInt(col.b * 256, 10)}
-                  onChange={newColor => {
-                    col.setRGB(
-                      newColor.red / 256,
-                      newColor.green / 256,
-                      newColor.blue / 256
-                    );
-                  }}
-                />
-              );
-            case 'f':
-              return (
-                <dg.Number
-                  key={key}
-                  label={key}
-                  value={cu.value}
-                  min={cu.min}
-                  max={cu.max}
-                  step={cu.step}
-                  onChange={val => {
-                    cu.value = val;
-                  }}
-                />
-              );
-            default:
-              return '';
+          if (!Boolean(this.props.currentShader.uniforms[key].hidden)) {
+            let cu = this.props.currentShader.uniforms[key];
+            switch (cu.type) {
+              case 'c':
+                let col = cu.value;
+                return (
+                  <dg.Color
+                    key={key}
+                    label={key}
+                    expanded={false}
+                    red={parseInt(col.r * 256, 10)}
+                    green={parseInt(col.g * 256, 10)}
+                    blue={parseInt(col.b * 256, 10)}
+                    onChange={newColor => {
+                      col.setRGB(
+                        newColor.red / 256,
+                        newColor.green / 256,
+                        newColor.blue / 256
+                      );
+                    }}
+                  />
+                );
+              case 'f':
+                return (
+                  <dg.Number
+                    key={key}
+                    label={key}
+                    value={cu.value}
+                    min={cu.min}
+                    max={cu.max}
+                    step={cu.step}
+                    onChange={val => {
+                      cu.value = val;
+                    }}
+                  />
+                );
+              default:
+                return '';
+            }
+          } else {
+            return '';
           }
           //return <dg.Text label={key} key={key} value={key} />;
         })}
