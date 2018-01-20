@@ -35,9 +35,9 @@ export default class Controls extends PureComponent {
                   key={key}
                   label={key}
                   expanded={false}
-                  red={col.r * 256}
-                  green={col.g * 256}
-                  blue={col.b * 256}
+                  red={parseInt(col.r * 256, 10)}
+                  green={parseInt(col.g * 256, 10)}
+                  blue={parseInt(col.b * 256, 10)}
                   onChange={newColor => {
                     col.setRGB(
                       newColor.red / 256,

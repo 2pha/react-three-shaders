@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 export default class Scene extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.setupScene();
   }
 
@@ -90,6 +90,11 @@ export default class Scene extends Component {
       Math.cos(timer * 1.25) * (this.props.light2distance || 250);
     this.light2.position.z =
       Math.sin(timer * 1.25) * (this.props.light2distance || 250);
+
+    if (typeof this.props.onAnimate === 'function') {
+      this.props.onAnimate();
+    }
+
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(this.animate.bind(this));
   }
