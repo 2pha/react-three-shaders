@@ -15,6 +15,8 @@ import simpleLines from './shaders/SimpleLines';
 import fadedLines from './shaders/FadedLines';
 import starburst from './shaders/Starburst';
 import matrix from './shaders/Matrix';
+import normal from './shaders/Normal';
+import voronoise from './shaders/Voronoise';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +29,9 @@ class App extends Component {
       simpleLines,
       fadedLines,
       starburst,
-      matrix
+      normal,
+      matrix,
+      voronoise
     ];
     this.state = {
       currentShader: null,
