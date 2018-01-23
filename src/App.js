@@ -37,7 +37,16 @@ class App extends Component {
     ];
     this.shapes = [
       { name: 'Cube', class: 'BoxGeometry', args: [200, 200, 200] },
-      { name: 'Cylinder', class: 'CylinderGeometry', args: [100, 100, 200, 32] }
+      {
+        name: 'Cylinder',
+        class: 'CylinderGeometry',
+        args: [100, 100, 200, 32]
+      },
+      {
+        name: 'Torus Knot',
+        class: 'TorusKnotGeometry',
+        args: [100, 30, 100, 16]
+      }
     ];
     this.state = {
       currentShader: null,
