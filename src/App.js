@@ -35,9 +35,14 @@ class App extends Component {
       voronoise,
       woodGrain
     ];
+    this.shapes = [
+      { name: 'Cube', class: 'BoxGeometry', args: [200, 200, 200] },
+      { name: 'Cylinder', class: 'CylinderGeometry', args: [100, 100, 200, 32] }
+    ];
     this.state = {
       currentShader: null,
-      currentShaderObject: null
+      currentShaderObject: null,
+      currentShape: this.shapes[0]
     };
     this.clock = new THREE.Clock();
   }
@@ -48,6 +53,10 @@ class App extends Component {
 
   getShaderFromName(name) {
     return this.shaders.find(x => x.name === name);
+  }
+
+  getShapeFromName(name) {
+    return this.shapes.find(x => x.name === name);
   }
 
   setShaderFromName(name) {
@@ -87,10 +96,15 @@ class App extends Component {
     }
   }
 
+  changeShape(shapeName) {
+    this.setState({ currentShape: this.getShapeFromName(shapeName) });
+  }
+
   render() {
     return (
       <div className="App">
         <Scene
+          currentShape={this.state.currentShape}
           currentShader={this.state.currentShader}
           onAnimate={() => {
             this.animateCallback();
@@ -101,6 +115,10 @@ class App extends Component {
         />
         <Stats />
         <Controls
+          shapes={this.shapes}
+          onShapeSelect={shapeName => {
+            this.changeShape(shapeName);
+          }}
           shaders={this.shaders}
           currentShader={this.state.currentShader}
           onShaderSelect={shaderName => {

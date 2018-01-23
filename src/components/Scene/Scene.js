@@ -1,12 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import * as THREE from 'three';
 
-export default class Scene extends Component {
-  constructor(props) {
-    super(props);
-    this.setupScene();
-  }
-
+export default class Scene extends PureComponent {
   setupScene() {
     // Create renderer.
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -45,12 +40,30 @@ export default class Scene extends Component {
     this.material = new THREE.MeshBasicMaterial();
 
     // Create and add mesh/object.
-    this.geometry = new THREE.BoxGeometry(200, 200, 200);
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.scene.add(this.mesh);
+    //this.geometry = new THREE.BoxGeometry(200, 200, 200);
+    //this.mesh = new THREE.Mesh(this.geometry, this.material);
+    //this.scene.add(this.mesh);
+
+    this.addMesh();
 
     // Add resize listener.
     window.addEventListener('resize', this.sizeRenderer.bind(this), false);
+  }
+
+  addMesh(shapeOb = null) {
+    // remove previous mesh.
+    if (Boolean(this.mesh)) {
+      this.scene.remove(this.mesh);
+    }
+    // Add new mesh, default if no shapeOb.
+    if (!Boolean(shapeOb)) {
+      this.geometry = new THREE.BoxGeometry(200, 200, 200);
+      this.mesh = new THREE.Mesh(this.geometry, this.material);
+    } else {
+      this.geometry = new THREE[shapeOb.class](...shapeOb.args);
+      this.mesh = new THREE.Mesh(this.geometry, this.material);
+    }
+    this.scene.add(this.mesh);
   }
 
   sizeRenderer() {
@@ -60,18 +73,23 @@ export default class Scene extends Component {
   }
 
   componentDidMount() {
+    this.setupScene();
     this.sizeRenderer();
     this.scenecontainer.appendChild(this.renderer.domElement);
     this.animate();
   }
 
   componentWillReceiveProps(nextProps) {
+    // Only add/change the mesh if it is different.
+    if (this.mesh.geometry.constructor.name !== nextProps.currentShape.class) {
+      this.addMesh(nextProps.currentShape);
+    }
     this.mesh.material = nextProps.currentShader;
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
 
   /**
    * Animation loop
