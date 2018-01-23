@@ -1,3 +1,54 @@
 canvas {
   display: block;
+  position: fixed;
+}
+div {
+  box-sizing: border-box;
+}
+h3 {
+  margin-top: 0px;
+}
+#codeviewcontainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#codeview {
+  margin: 10px 20px 20px 20px;
+  color: #fff;
+}
+#codeview .pane {
+  flex: 1 0 100%;
+  padding: 10px;
+  border: solid 1px #fff;
+  margin: 10px 0px;
+  background-color: #444;
+}
+pre {
+  overflow: auto;
+}
+#closebar {
+  margin: 20px 20px 10px 20px;
+  height: 30px;
+  position: relative;
+}
+#closebar #bartitle {
+  color: #fff;
+}
+#closebar #closebutton {
+  border: solid 1px #fff;
+  display: inline-block;
+  color: #fff;
+  background-color: #444;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  line-height: 28px;
+  padding: 0px 10px;
 }

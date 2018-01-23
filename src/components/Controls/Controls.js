@@ -78,6 +78,14 @@ export default class Controls extends PureComponent {
             //return <dg.Text label={key} key={key} value={key} />;
           })}
         </dg.Folder>
+        <dg.Button
+          label="view shader code"
+          onClick={() => {
+            if (this.props.codeButtonClick) {
+              this.props.codeButtonClick();
+            }
+          }}
+        />
       </dg.GUI>
     );
   }

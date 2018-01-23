@@ -6,6 +6,7 @@ import './App.css';
 import Scene from './components/Scene/Scene';
 import Stats from './components/Stats/Stats';
 import Controls from './components/Controls/Controls';
+import CodeView from './components/CodeView/CodeView';
 
 import basicColor from './shaders/BasicColor';
 import basicColorLights from './shaders/BasicColorLights';
@@ -49,9 +50,10 @@ class App extends Component {
       }
     ];
     this.state = {
-      currentShader: null,
-      currentShaderObject: null,
-      currentShape: this.shapes[0]
+      currentShader: {},
+      currentShaderObject: {},
+      currentShape: this.shapes[0],
+      showCode: false
     };
     this.clock = new THREE.Clock();
   }
@@ -109,6 +111,10 @@ class App extends Component {
     this.setState({ currentShape: this.getShapeFromName(shapeName) });
   }
 
+  showCode(show = false) {
+    this.setState({ showCode: show });
+  }
+
   render() {
     return (
       <div className="App">
@@ -134,6 +140,18 @@ class App extends Component {
             //this.setShader(shader);
             this.setShaderFromName(shaderName);
           }}
+          codeButtonClick={() => {
+            this.showCode(true);
+          }}
+        />
+        <CodeView
+          visible={this.state.showCode}
+          shaderName={this.state.currentShaderObject.name || ''}
+          onBorderClick={() => {
+            this.showCode(false);
+          }}
+          vertexShader={this.state.currentShaderObject.vertexShader || ''}
+          fragmentShader={this.state.currentShaderObject.fragmentShader || ''}
         />
       </div>
     );

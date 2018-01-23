@@ -16,7 +16,8 @@ export default class Stats extends Component {
       position: 'absolute',
       padding: '10px',
       right: '0px',
-      bottom: '0px'
+      bottom: '0px',
+      position: 'fixed'
     };
   }
 
@@ -77,6 +78,10 @@ export default class Stats extends Component {
   }
 
   render() {
-    return <div style={this.style}>{this.state.fps} fps</div>;
+    return (
+      <div id="stats" style={this.style}>
+        {this.state.fps} fps
+      </div>
+    );
   }
 }
