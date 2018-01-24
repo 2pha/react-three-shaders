@@ -13,7 +13,6 @@ export default class Stats extends Component {
 
     this.style = {
       color: '#ffffff',
-      position: 'absolute',
       padding: '10px',
       right: '0px',
       bottom: '0px',

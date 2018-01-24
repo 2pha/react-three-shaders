@@ -19,6 +19,11 @@ import matrix from './shaders/Matrix';
 import normal from './shaders/Normal';
 import voronoise from './shaders/Voronoise';
 import woodGrain from './shaders/WoodGrain';
+import simplexNoise3D from './shaders/SimplexNoise3D';
+import perlinNoise3D from './shaders/PerlinNoise3D';
+import perlinVertexDisp from './shaders/PerlinVertexDisp';
+import polkaNoise from './shaders/PolkaNoise';
+import fresnel2Color from './shaders/Fresnel2Color';
 
 class App extends Component {
   constructor(props) {
@@ -34,14 +39,20 @@ class App extends Component {
       normal,
       matrix,
       voronoise,
-      woodGrain
+      woodGrain,
+      simplexNoise3D,
+      perlinNoise3D,
+      perlinVertexDisp,
+      polkaNoise,
+      fresnel2Color
     ];
     this.shapes = [
-      { name: 'Cube', class: 'BoxGeometry', args: [200, 200, 200] },
+      { name: 'Cube', class: 'BoxGeometry', args: [200, 200, 200, 50, 50, 50] },
+      { name: 'Sphere', class: 'SphereGeometry', args: [150, 32, 32] },
       {
         name: 'Cylinder',
         class: 'CylinderGeometry',
-        args: [100, 100, 200, 32]
+        args: [100, 100, 200, 32, 100]
       },
       {
         name: 'Torus Knot',

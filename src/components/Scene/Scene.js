@@ -57,7 +57,7 @@ export default class Scene extends PureComponent {
     }
     // Add new mesh, default if no shapeOb.
     if (!Boolean(shapeOb)) {
-      this.geometry = new THREE.BoxGeometry(200, 200, 200);
+      this.geometry = new THREE.BoxGeometry(200, 200, 200, 50, 50, 50);
       this.mesh = new THREE.Mesh(this.geometry, this.material);
     } else {
       this.geometry = new THREE[shapeOb.class](...shapeOb.args);

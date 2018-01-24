@@ -69,6 +69,21 @@ export default class Controls extends PureComponent {
                       }}
                     />
                   );
+                case 'i':
+                  if (Boolean(cu.checkbox)) {
+                    return (
+                      <dg.Checkbox
+                        key={key}
+                        label={key}
+                        checked={Boolean(cu.value)}
+                        onChange={val => {
+                          cu.value = Number(val);
+                        }}
+                      />
+                    );
+                  } else {
+                    // Is there ever a time for integer that isn't a checkbox? not yet.
+                  }
                 default:
                   return '';
               }
