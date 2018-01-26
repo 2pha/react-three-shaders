@@ -83,6 +83,7 @@ export default class Controls extends PureComponent {
                     );
                   } else {
                     // Is there ever a time for integer that isn't a checkbox? not yet.
+                    return '';
                   }
                 default:
                   return '';

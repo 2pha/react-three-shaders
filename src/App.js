@@ -160,13 +160,18 @@ class App extends Component {
           Originals at{' '}
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://2pha.com/blog/experimenting-threejs-shaders-and-shadermaterial/"
           >
             this blog post
           </a>
           <br />
           Build with Three.js and React.js<br />
-          <a target="_blank" href="https://github.com/2pha/react-three-shaders">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/2pha/react-three-shaders"
+          >
             https://github.com/2pha/react-three-shaders
           </a>
         </div>
