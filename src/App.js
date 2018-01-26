@@ -155,6 +155,21 @@ class App extends Component {
             this.showCode(true);
           }}
         />
+        <div id="info">
+          Three.js ShaderMaterial experiments.<br />
+          Originals at{' '}
+          <a
+            target="_blank"
+            href="https://2pha.com/blog/experimenting-threejs-shaders-and-shadermaterial/"
+          >
+            this blog post
+          </a>
+          <br />
+          Build with Three.js and React.js<br />
+          <a target="_blank" href="https://github.com/2pha/react-three-shaders">
+            https://github.com/2pha/react-three-shaders
+          </a>
+        </div>
         <CodeView
           visible={this.state.showCode}
           shaderName={this.state.currentShaderObject.name || ''}

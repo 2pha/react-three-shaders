@@ -52,3 +52,16 @@ pre {
   line-height: 28px;
   padding: 0px 10px;
 }
+
+#info {
+  padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+}
+#info a {
+  color: #fff;
+}
