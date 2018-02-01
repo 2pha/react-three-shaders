@@ -67,6 +67,8 @@ class App extends Component {
       showCode: false
     };
     this.clock = new THREE.Clock();
+    this.threeVersion = THREE.REVISION;
+    this.reactVersion = React.version;
   }
 
   componentDidMount() {
@@ -166,7 +168,9 @@ class App extends Component {
             this blog post
           </a>
           <br />
-          Build with Three.js and React.js<br />
+          Build with Three.js ({this.threeVersion}) and React.js ({
+            this.reactVersion
+          })<br />
           <a
             target="_blank"
             rel="noopener noreferrer"
