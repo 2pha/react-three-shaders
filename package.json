@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "dis-gui": "^2.0.10",
-    "three": "^0.125.0"
+    "three": "^0.137.0"
   }
 }
